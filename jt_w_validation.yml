@@ -16,24 +16,24 @@ spec:
           title: serverNameOrPattern
           type: string
           description: FQDN or ansible host-string
+          pattern: '^(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)(\.(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?))*$'
+          ui:errorMessages:
+            pattern: "Must be a valid FQDN or pattern (e.g., 'vm1.dev.local' or 'vm*.example.*.com')"
           ui:autofocus: true
           ui:options:
             rows: 5
           pattern: '^(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)(\.(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?))*$'
-          ui:errors:
-            pattern: "Must be a valid FQDN or pattern (e.g., 'vm1.dev.local' or '*.example.com')"
-
         nameSpace:
           title: nameSpace
           type: string
           description: OpenShift namespace of the VM to snapshot
+          pattern: '^[a-zA-Z0-9-]+$'
+          ui:errorMessages:
+            pattern: "Can only contain letters, numbers, and dashes"
           ui:options:
             catalogFilter:
               kind: Group
           pattern: '^[a-zA-Z0-9-]+$'
-          ui:errors:
-            pattern: "Can only contain letters, numbers, and dashes"
-
   steps:
     - id: launch-job
       name: OpenShift / CNV / Create VM Snapshots
