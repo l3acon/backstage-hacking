@@ -11,7 +11,7 @@ spec:
         - serverNameOrPattern
         - nameSpace
       properties:
-        name:
+        serverNameOrPattern:
           title: serverNameOrPattern
           type: string
           description: FQDN or ansible host-string
