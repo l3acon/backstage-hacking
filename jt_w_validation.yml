@@ -5,6 +5,7 @@ metadata:
   title: Template to show field validation
   description: look how cool
 spec:
+  type: template
   parameters:
     - title: Snapshot VM
       required:
