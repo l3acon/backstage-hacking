@@ -22,7 +22,6 @@ spec:
           ui:autofocus: true
           ui:options:
             rows: 5
-          pattern: '^(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)(\.(\*|[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?))*$'
         nameSpace:
           title: nameSpace
           type: string
@@ -33,7 +32,6 @@ spec:
           ui:options:
             catalogFilter:
               kind: Group
-          pattern: '^[a-zA-Z0-9-]+$'
   steps:
     - id: launch-job
       name: OpenShift / CNV / Create VM Snapshots
