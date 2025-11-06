@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-thing
+  title: Template to show field validation
+  description: look how cool
+spec:
+  parameters:
+    - title: Snapshot VM
+      required:
+        - serverNameOrPattern
+        - nameSpace
+      properties:
+        name:
+          title: serverNameOrPattern
+          type: string
+          description: FQDN or ansible host-string
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        nameSpace:
+          title: nameSpace
+          type: string
+          description: OpenShift namespace of the VM to snapshot
+          ui:options:
+            catalogFilter:
+              kind: Group
+
+  steps:
+    - id: launch-job
+      name: OpenShift / CNV / Create VM Snapshots
+        action: rhaap:launch-job-template
+        input:
+          token: ${{ parameters.token }}
+          values:
+            template: OpenShift / CNV / Create VM Snapshots
+            extraVariables:
+              _hosts: ${{ parameters.serverNameOrPattern }}
+              vm_namespace: ${{ parameters.nameSpace }}
+  
